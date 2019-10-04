@@ -39,3 +39,21 @@ public class Test {
     public Comparable getData() { return data; }
 }
 
+Restrictions on Static Members
+No static member can use a type parameter declared by the enclosing class. For example, all of the static members of this class are illegal:
+
+class Wrong<T> {
+  // Wrong, no static variables of type T.
+  static T ob;
+/*  w  w  w  .ja va  2s. c om*/
+  // Wrong, no static method can use T.
+  static T getob() {
+    return ob;
+  }
+
+  // Wrong, no static method can access object of type T.
+  static void showob() {
+    System.out.println(ob);
+  }
+}
+You can declare static generic methods with their own type parameters
